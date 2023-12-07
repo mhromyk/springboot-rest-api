@@ -13,7 +13,7 @@ public class ExceptionControllerAdvice {
 
 
     @ExceptionHandler(value = NotEnoughMoneyException.class)
-    public ResponseEntity<ErrorDetails> notEnoughMoney() {
-        return ResponseEntity.status(BAD_REQUEST).body(new ErrorDetails("Not enough money on the account."));
+    public ResponseEntity<ErrorDetails> notEnoughMoney(NotEnoughMoneyException exception) {
+        return ResponseEntity.status(BAD_REQUEST).body(new ErrorDetails(exception.getMessage()));
     }
 }
